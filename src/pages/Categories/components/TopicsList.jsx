@@ -8,7 +8,7 @@ const TopicsList = ({ setBlogEditorModal, categories }) => {
 
   const handleCategoryChange = () => {
     setTopics((prev) => {
-      let arr = prev?.map((element) => {
+      let arr = blogs?.filter((element) => {
         if (element.category == categories) {
           return element;
         }
@@ -39,7 +39,7 @@ const TopicsList = ({ setBlogEditorModal, categories }) => {
               setBlogEditorModal={setBlogEditorModal}
             />
           ))
-        : topics?.map((topic, index) => (
+        :topics.length==0?<p className="bg-white text-gray-800 font-semibold text-xl py-3 px-1 sml:px-4 text-center">Sorry! There are no blogs in this Category</p> : topics?.map((topic, index) => (
             <Topics
               key={index}
               index={index}
