@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { GrFormClose } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import { addTopics } from "../../../features/topics-Slice";
+import { toast } from "react-toastify";
 
 const categories = ["custom", "icp", "mission", "product"];
 const AddTopic = ({ addTopicModal, setAddTopicModal }) => {
@@ -18,6 +19,14 @@ const AddTopic = ({ addTopicModal, setAddTopicModal }) => {
   
 
   const handleAddTopics = () => {
+    if(topicData.topic==""){
+      toast.warning("Please fill the topic.");
+      return;
+    }
+    if(topicData.keywords.length==0){
+      toast.warning("Please add atleast one keyword.");
+      return;
+    }
     dispatch(addTopics(topicData));
     setTopicData({
       topic: "",
@@ -25,6 +34,7 @@ const AddTopic = ({ addTopicModal, setAddTopicModal }) => {
       keywords: [],
     });
     setAddTopicModal(false);
+    toast.success("Your topics is added successfully.")
   };
 
   if (!addTopicModal) return null;

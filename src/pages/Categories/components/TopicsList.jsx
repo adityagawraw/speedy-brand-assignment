@@ -30,23 +30,29 @@ const TopicsList = ({ setBlogEditorModal, categories }) => {
       <p className="px-2 sml:px-4 border-b py-2 font-semibold">
         Recommended Topics
       </p>
-      {categories == "all"
-        ? blogs?.map((topic, index) => (
-            <Topics
-              key={index}
-              index={index}
-              topic={topic}
-              setBlogEditorModal={setBlogEditorModal}
-            />
-          ))
-        :topics.length==0?<p className="bg-white text-gray-800 font-semibold text-xl py-3 px-1 sml:px-4 text-center">Sorry! There are no blogs in this Category</p> : topics?.map((topic, index) => (
-            <Topics
-              key={index}
-              index={index}
-              topic={topic}
-              setBlogEditorModal={setBlogEditorModal}
-            />
-          ))}
+      {categories == "all" ? (
+        blogs?.map((topic, index) => (
+          <Topics
+            key={index}
+            index={index}
+            topic={topic}
+            setBlogEditorModal={setBlogEditorModal}
+          />
+        ))
+      ) : topics.length == 0 ? (
+        <p className="bg-white text-gray-800 font-semibold text-xl py-3 px-1 sml:px-4 text-center">
+          Sorry! There are no blogs in this Category
+        </p>
+      ) : (
+        topics?.map((topic, index) => (
+          <Topics
+            key={index}
+            index={index}
+            topic={topic}
+            setBlogEditorModal={setBlogEditorModal}
+          />
+        ))
+      )}
     </div>
   );
 };
