@@ -1,0 +1,15 @@
+.category{
+    min-width:7px;
+}
+@media only screen and (min-width:700px){
+    .category{
+        min-width:100px;
+    }
+    
+}
+@media only screen and (min-width:850px){
+    .category{
+        min-width:130px;
+    }
+    
+}
